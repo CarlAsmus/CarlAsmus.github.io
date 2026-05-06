@@ -1,0 +1,22 @@
+title: Carl Asmus
+email: ""
+description: IT Specialist & App Developer
+baseurl: ""
+url: "https://casmus.net"
+
+theme: minima
+
+minima:
+  skin: classic
+
+header_pages:
+  - index.md
+  - apps.md
+
+author:
+  name: Carl Asmus
+
+show_excerpts: false
+
+plugins:
+  - jekyll-feed
