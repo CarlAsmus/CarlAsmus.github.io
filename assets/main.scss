@@ -1,0 +1,263 @@
+---
+---
+
+@import "minima";
+
+// ── Variables ──────────────────────────────────────────────
+$brand-blue:      #1565c0;
+$brand-blue-mid:  #1976d2;
+$brand-blue-light:#e3f2fd;
+$accent:          #42a5f5;
+$text-muted:      #666;
+$border-light:    #e0e0e0;
+
+// ── Profile hero ───────────────────────────────────────────
+.profile-hero {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.75rem;
+  padding: 0.5rem 0 1.5rem;
+}
+
+.profile-photo {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 3px solid $brand-blue-light;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+.profile-text {
+  flex: 1;
+}
+
+@media (max-width: 480px) {
+  .profile-hero {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+.profile-tagline {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: $brand-blue;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+}
+
+.profile-summary {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #444;
+  max-width: 680px;
+}
+
+// ── Section headings ───────────────────────────────────────
+.page-content h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: $brand-blue;
+  border-bottom: 2px solid $accent;
+  padding-bottom: 0.35em;
+  margin-top: 2.25rem;
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+// ── Experience entries ─────────────────────────────────────
+.experience-entry {
+  margin-bottom: 1.75rem;
+
+  .experience-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    margin-bottom: 0.6rem;
+  }
+
+  strong {
+    font-size: 1.02rem;
+    color: #222;
+  }
+
+  .company {
+    color: $brand-blue-mid;
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+
+  .date-range {
+    font-size: 0.88rem;
+    color: $text-muted;
+    white-space: nowrap;
+    padding-top: 0.15rem;
+  }
+
+  ul {
+    margin-top: 0.4rem;
+    padding-left: 1.4rem;
+
+    li {
+      margin-bottom: 0.35rem;
+      line-height: 1.6;
+      color: #333;
+    }
+  }
+}
+
+// ── Skills grid ────────────────────────────────────────────
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.skill-category {
+  h4 {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: $brand-blue;
+    margin-bottom: 0.6rem;
+    margin-top: 0;
+  }
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.skill-tag {
+  display: inline-block;
+  background: $brand-blue-light;
+  color: $brand-blue;
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 0.25em 0.7em;
+  border-radius: 99px;
+  border: 1px solid darken($brand-blue-light, 8%);
+  line-height: 1.5;
+}
+
+// ── Education ─────────────────────────────────────────────
+.education-entry {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  line-height: 1.8;
+  color: #333;
+
+  strong {
+    font-size: 1rem;
+    color: #222;
+  }
+
+  em {
+    color: $text-muted;
+    font-size: 0.93rem;
+  }
+}
+
+.edu-logo {
+  width: 140px;
+  height: auto;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+// ── Apps page ─────────────────────────────────────────────
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+
+  h2 {
+    margin: 0;
+    border-bottom: none;
+  }
+}
+
+.app-logo {
+  width: 64px;
+  height: 64px;
+  border-radius: 14px;
+  object-fit: cover;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+// ── App store link (apps.md) ───────────────────────────────
+.app-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.app-store-link {
+  display: inline-block;
+  background: $brand-blue;
+  color: #fff !important;
+  padding: 0.5em 1.2em;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background 0.2s;
+
+  &:hover {
+    background: $brand-blue-mid;
+    text-decoration: none;
+  }
+}
+
+.privacy-link {
+  display: inline-block;
+  background: transparent;
+  color: $brand-blue !important;
+  padding: 0.5em 1.2em;
+  border-radius: 6px;
+  border: 2px solid $brand-blue;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+
+  &:hover {
+    background: $brand-blue-light;
+    text-decoration: none;
+  }
+}
+
+// ── Privacy policy page ────────────────────────────────────
+.policy-updated {
+  color: $text-muted;
+  font-size: 0.9rem;
+  margin-top: -0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+// ── Responsive tweaks ─────────────────────────────────────
+@media (max-width: 600px) {
+  .experience-entry .experience-header {
+    flex-direction: column;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
