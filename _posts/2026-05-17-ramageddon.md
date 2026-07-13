@@ -3,6 +3,7 @@ layout: post
 title: "Opinion: RAMageddon Is Not Ending Anytime Soon — And PC Gaming Is Paying the Price"
 date: 2026-05-17
 tags: [Opinion, PC Hardware]
+published: false
 ---
 
 *AI didn't just change software. It broke the hardware market we built our hobby on.*

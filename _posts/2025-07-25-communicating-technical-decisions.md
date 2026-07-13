@@ -3,6 +3,7 @@ layout: post
 title: "Communicating Technical Decisions to Non-Technical School Leadership"
 date: 2025-07-25
 tags: [IT, K-12]
+published: false
 ---
 
 *You know the right call. Now you have to convince the people holding the budget.*

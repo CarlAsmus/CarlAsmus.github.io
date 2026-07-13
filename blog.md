@@ -2,6 +2,7 @@
 layout: page
 title: Blog
 permalink: /blog/
+published: false
 ---
 
 {% assign all_tags = "" | split: "" %}

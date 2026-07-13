@@ -12,9 +12,8 @@ minima:
     - { platform: linkedin, user_url: "https://www.linkedin.com/in/carl-asmus" }
 
 header_pages:
-  - index.md
+  - about.md
   - apps.md
-  - blog.md
   - contact.md
 
 author:

@@ -3,6 +3,7 @@ layout: post
 title: "Managing Student Data Privacy When Teachers Want to Use Third-Party Apps"
 date: 2025-12-28
 tags: [IT, K-12]
+published: false
 ---
 
 *"Can we use this app?" is a four-word question with a surprisingly long answer.*
