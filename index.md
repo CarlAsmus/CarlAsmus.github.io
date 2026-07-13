@@ -5,7 +5,10 @@ permalink: /
 ---
 
 <div class="profile-hero">
-  <img src="/assets/images/profile.jpeg" alt="Carl Asmus" class="profile-photo">
+  <div class="profile-photo-wrap">
+    <img src="/assets/images/profile.jpeg" alt="Carl Asmus" class="profile-photo">
+    <div class="profile-name">Carl Asmus</div>
+  </div>
   <div class="profile-text">
     <div class="profile-tagline">IT Systems Administrator</div>
     <p class="profile-summary">IT professional with hands-on experience leading technology infrastructure, identity management, and device management in a K-12 educational setting. Skilled in partnering with academic and administrative leadership to align technology with institutional goals.</p>
@@ -115,7 +118,7 @@ permalink: /
   <img src="/assets/images/msum-logo.jpeg" alt="Minnesota State University Moorhead" class="edu-logo">
   <div>
     <strong>B.S. Computer Information Technology</strong><br>
-    Minnesota State Moorhead &nbsp;·&nbsp; 2022<br>
+    Minnesota State Moorhead<br>
     <em>Minor in Project Management</em>
   </div>
 </div>

@@ -1,4 +1,4 @@
-title: Carl Asmus
+title: CAsmus
 email: ""
 description: IT Systems Administrator
 baseurl: ""
@@ -14,6 +14,8 @@ minima:
 header_pages:
   - index.md
   - apps.md
+  - blog.md
+  - contact.md
 
 author:
   name: Carl Asmus

@@ -1,22 +1,225 @@
 ---
 ---
 
+@import url('https://fonts.googleapis.com/css2?family=Bowlby+One&family=Inter:wght@400;500;600;700&display=swap');
 @import "minima";
 
-// ── Variables ──────────────────────────────────────────────
-$brand-blue:      #1565c0;
-$brand-blue-mid:  #1976d2;
-$brand-blue-light:#e3f2fd;
-$accent:          #42a5f5;
-$text-muted:      #666;
-$border-light:    #e0e0e0;
+// ── Blue palette ───────────────────────────────────────────
+$sunset-1: #1565c0;  // deep blue
+$sunset-2: #1976d2;  // medium-dark blue
+$sunset-3: #2a7ae2;  // main blue
+$sunset-4: #42a5f5;  // light blue
+$sunset-5: #90caf9;  // pale blue
+
+$cream:       #fdfdfd;
+$cream-deep:  #f0f0f0;
+$cream-line:  #e8e8e8;
+$ink:         #222222;
+$ink-soft:    #444444;
+$ink-muted:   #828282;
+
+$accent:      $sunset-3;
+$accent-soft: #e3f2fd;
+
+$display-font: 'Bowlby One', system-ui, sans-serif;
+$body-font:    'Inter', -apple-system, system-ui, sans-serif;
+
+$stripe-bg: linear-gradient(
+  180deg,
+  #{$sunset-1} 0%,  #{$sunset-1} 20%,
+  #{$sunset-2} 20%, #{$sunset-2} 40%,
+  #{$sunset-3} 40%, #{$sunset-3} 60%,
+  #{$sunset-4} 60%, #{$sunset-4} 80%,
+  #{$sunset-5} 80%, #{$sunset-5} 100%
+);
+
+// ── Base overrides ─────────────────────────────────────────
+html, body {
+  background: $cream;
+  color: $ink;
+  font-family: $body-font;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+// ── Site header ────────────────────────────────────────────
+.site-header {
+  border-top: none;
+  border-bottom: 2px solid $cream-line;
+  background: $cream;
+  min-height: auto;
+
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+}
+
+.site-title,
+.site-title:visited {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: $ink !important;
+  font-family: $body-font;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+  float: none;
+
+  &:hover { text-decoration: none; }
+}
+
+.logo-mark {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: $stripe-bg;
+  display: grid;
+  place-items: center;
+  color: $cream;
+  font-family: $display-font;
+  font-size: 18px;
+  letter-spacing: 0.02em;
+  box-shadow: 0 2px 0 $ink;
+  flex-shrink: 0;
+}
+
+.wordmark {
+  font-family: $display-font;
+  font-size: 28px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: $ink;
+}
+
+.wordmark-accent {
+  background-image: $stripe-bg;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+// Legacy minima site-logo / site-title-accent — hide / no-op
+.site-logo { display: none; }
+.site-title-accent { color: inherit; }
+
+.site-nav {
+  float: none;
+  line-height: 1;
+  background: transparent;
+  border: none;
+  position: static;
+
+  .nav-trigger,
+  label[for="nav-trigger"] { display: none; }
+
+  .trigger {
+    display: flex;
+    gap: 4px;
+    clear: none;
+  }
+
+  .page-link {
+    color: $ink-soft;
+    font-weight: 600;
+    font-size: 0.92rem;
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 999px;
+    line-height: 1;
+    margin: 0;
+    transition: background 0.15s, color 0.15s;
+
+    &:hover {
+      background: $accent-soft;
+      color: $ink;
+      text-decoration: none;
+    }
+  }
+}
+
+// Mobile nav
+@media screen and (max-width: 600px) {
+  .site-nav {
+    margin-left: auto;
+    position: relative;
+
+    label[for="nav-trigger"] {
+      display: block;
+      cursor: pointer;
+      width: 36px;
+      height: 26px;
+      padding-top: 4px;
+      padding-bottom: 10px;
+      text-align: center;
+    }
+
+    .menu-icon { display: block; }
+    .menu-icon svg { fill: $ink; }
+
+    input ~ .trigger {
+      display: none;
+      clear: both;
+    }
+
+    input:checked ~ .trigger {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      right: 0;
+      top: calc(100% + 8px);
+      background: $cream;
+      border: 1px solid $cream-line;
+      border-radius: 10px;
+      padding: 8px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      z-index: 50;
+    }
+
+    .page-link { padding: 8px 12px; white-space: nowrap; }
+  }
+}
+
+// ── Page title (minima default + post) ─────────────────────
+.post-title,
+.page-content > .wrapper > .post > .post-header > .post-title {
+  font-family: $body-font;
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1.15;
+  margin: 0 0 28px;
+  letter-spacing: -0.01em;
+  color: $ink;
+  background: none;
+  -webkit-text-fill-color: initial;
+}
 
 // ── Profile hero ───────────────────────────────────────────
 .profile-hero {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 28px;
+  align-items: center;
+  padding: 4px 0 8px;
+  margin-bottom: 24px;
+}
+
+.profile-photo-wrap {
   display: flex;
-  align-items: flex-start;
-  gap: 1.75rem;
-  padding: 0.5rem 0 1.5rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
 .profile-photo {
@@ -25,90 +228,132 @@ $border-light:    #e0e0e0;
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
-  border: 3px solid $brand-blue-light;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 2px $cream-line, 0 2px 8px rgba(0,0,0,0.08);
 }
 
-.profile-text {
-  flex: 1;
+.profile-name {
+  font-family: $body-font;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: $ink;
+  line-height: 1.2;
+  text-align: center;
 }
 
-@media (max-width: 480px) {
-  .profile-hero {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-}
+.profile-text { flex: 1; }
 
 .profile-tagline {
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: $brand-blue;
-  letter-spacing: 0.02em;
-  margin-bottom: 0.75rem;
+  font-family: $body-font;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+  color: $accent;
+  margin-bottom: 10px;
 }
 
 .profile-summary {
   font-size: 1rem;
   line-height: 1.7;
-  color: #444;
-  max-width: 680px;
+  color: $ink-soft;
+  max-width: 60ch;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .profile-hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .profile-photo-wrap { margin: 0 auto; }
+  .profile-summary { margin: 0 auto; }
 }
 
 // ── Section headings ───────────────────────────────────────
 .page-content h2 {
-  font-size: 1.3rem;
+  font-family: $body-font;
   font-weight: 700;
-  color: $brand-blue;
-  border-bottom: 2px solid $accent;
-  padding-bottom: 0.35em;
-  margin-top: 2.25rem;
-  margin-bottom: 1.25rem;
-  letter-spacing: 0.03em;
+  font-size: 0.78rem;
+  line-height: 1;
+  margin: 44px 0 18px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
+  color: $ink-muted;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: none;
+  padding-bottom: 0;
+
+  &::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: $cream-line;
+  }
 }
 
 // ── Experience entries ─────────────────────────────────────
 .experience-entry {
-  margin-bottom: 1.75rem;
+  padding: 4px 0 20px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid $cream-line;
+
+  &:last-of-type { border-bottom: none; }
 
   .experience-header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: baseline;
     flex-wrap: wrap;
-    gap: 0.25rem;
-    margin-bottom: 0.6rem;
+    gap: 4px 16px;
+    margin-bottom: 10px;
   }
 
   strong {
-    font-size: 1.02rem;
-    color: #222;
+    font-weight: 600;
+    font-size: 1rem;
+    color: $ink;
+    line-height: 1.35;
   }
 
   .company {
-    color: $brand-blue-mid;
+    color: $ink-soft;
     font-weight: 500;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
   }
 
   .date-range {
-    font-size: 0.88rem;
-    color: $text-muted;
+    font-family: $body-font;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: $ink-muted;
     white-space: nowrap;
-    padding-top: 0.15rem;
   }
 
   ul {
-    margin-top: 0.4rem;
-    padding-left: 1.4rem;
+    margin: 4px 0 0;
+    padding-left: 18px;
+    list-style: none;
 
     li {
-      margin-bottom: 0.35rem;
-      line-height: 1.6;
-      color: #333;
+      margin-bottom: 5px;
+      color: $ink-soft;
+      line-height: 1.65;
+      position: relative;
+      font-size: 0.95rem;
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: -14px;
+        top: 0.7em;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: $accent;
+      }
     }
   }
 }
@@ -117,67 +362,72 @@ $border-light:    #e0e0e0;
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.25rem;
-  margin-bottom: 0.5rem;
+  gap: 22px 28px;
+  margin-bottom: 8px;
 }
 
 .skill-category {
   h4 {
-    font-size: 0.8rem;
+    font-family: $body-font;
+    font-size: 0.72rem;
     font-weight: 700;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: $brand-blue;
-    margin-bottom: 0.6rem;
-    margin-top: 0;
+    color: $ink-muted;
+    margin: 0 0 10px;
   }
 }
 
 .skill-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
+  gap: 6px;
 }
 
 .skill-tag {
   display: inline-block;
-  background: $brand-blue-light;
-  color: $brand-blue;
+  background: $cream-deep;
+  color: $ink-soft;
   font-size: 0.82rem;
   font-weight: 500;
-  padding: 0.25em 0.7em;
-  border-radius: 99px;
-  border: 1px solid darken($brand-blue-light, 8%);
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid $cream-line;
   line-height: 1.5;
 }
 
-// ── Education ─────────────────────────────────────────────
+// ── Education ──────────────────────────────────────────────
 .education-entry {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 22px;
   align-items: center;
-  gap: 1.25rem;
-  line-height: 1.8;
-  color: #333;
+  padding: 4px 0;
+  line-height: 1.6;
+  color: $ink-soft;
 
   strong {
+    font-weight: 600;
     font-size: 1rem;
-    color: #222;
+    color: $ink;
   }
 
   em {
-    color: $text-muted;
-    font-size: 0.93rem;
+    color: $ink-muted;
+    font-style: italic;
+    font-size: 0.88rem;
   }
 }
 
 .edu-logo {
-  width: 140px;
+  width: 96px;
   height: auto;
   flex-shrink: 0;
   object-fit: contain;
+  border-radius: 8px;
 }
 
-// ── Apps page ─────────────────────────────────────────────
+// ── Apps page ──────────────────────────────────────────────
 .app-header {
   display: flex;
   align-items: center;
@@ -187,6 +437,13 @@ $border-light:    #e0e0e0;
   h2 {
     margin: 0;
     border-bottom: none;
+    display: inline-block;
+    font-size: 1.1rem;
+    text-transform: none;
+    letter-spacing: -0.01em;
+    color: $ink;
+
+    &::after { display: none; }
   }
 }
 
@@ -196,68 +453,226 @@ $border-light:    #e0e0e0;
   border-radius: 14px;
   object-fit: cover;
   flex-shrink: 0;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.10);
 }
 
-// ── App store link (apps.md) ───────────────────────────────
 .app-actions {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 0.75rem;
   margin-top: 0.75rem;
 }
 
 .app-store-link {
   display: inline-block;
-  background: $brand-blue;
+  background: $accent;
   color: #fff !important;
   padding: 0.5em 1.2em;
-  border-radius: 6px;
+  border-radius: 8px;
   font-weight: 600;
   font-size: 0.95rem;
   text-decoration: none;
-  transition: background 0.2s;
+  transition: background 0.15s;
 
-  &:hover {
-    background: $brand-blue-mid;
-    text-decoration: none;
-  }
+  &:hover { background: darken($accent, 6%); text-decoration: none; }
 }
 
 .privacy-link {
   display: inline-block;
   background: transparent;
-  color: $brand-blue !important;
+  color: $accent !important;
   padding: 0.5em 1.2em;
-  border-radius: 6px;
-  border: 2px solid $brand-blue;
+  border-radius: 8px;
+  border: 2px solid $accent;
   font-weight: 600;
   font-size: 0.95rem;
   text-decoration: none;
-  transition: background 0.2s, color 0.2s;
+  transition: background 0.15s, color 0.15s;
 
   &:hover {
-    background: $brand-blue-light;
+    background: $accent-soft;
     text-decoration: none;
   }
 }
 
-// ── Privacy policy page ────────────────────────────────────
+// ── Privacy policy ─────────────────────────────────────────
 .policy-updated {
-  color: $text-muted;
+  color: $ink-muted;
   font-size: 0.9rem;
   margin-top: -0.5rem;
   margin-bottom: 1.5rem;
 }
 
-// ── Responsive tweaks ─────────────────────────────────────
-@media (max-width: 600px) {
-  .experience-entry .experience-header {
-    flex-direction: column;
+// ── Tag filter dropdown ────────────────────────────────────
+.tag-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+
+  label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: $ink-muted;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
   }
 
-  .skills-grid {
-    grid-template-columns: 1fr;
+  select {
+    padding: 0.4em 0.75em;
+    border: 1.5px solid $cream-line;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: $ink;
+    background: #fff;
+    cursor: pointer;
+    font-family: inherit;
+
+    &:focus {
+      outline: none;
+      border-color: $accent;
+    }
   }
+}
+
+.post-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.5rem;
+}
+
+.post-tag {
+  display: inline-block;
+  background: $cream-deep;
+  color: $ink-soft;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.15em 0.65em;
+  border-radius: 999px;
+  border: 1px solid $cream-line;
+}
+
+// ── Blog listing ───────────────────────────────────────────
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  list-style: none;
+  margin-left: 0;
+}
+
+.post-preview {
+  border-left: 3px solid $accent;
+  padding-left: 1.25rem;
+}
+
+.post-meta {
+  font-size: 0.85rem;
+  color: $ink-muted;
+  margin-bottom: 0.25rem;
+}
+
+.post-preview-title {
+  font-size: 1.15rem;
+  margin: 0 0 0.5rem;
+  border-bottom: none !important;
+  display: block !important;
+  text-transform: none !important;
+  letter-spacing: -0.01em !important;
+  color: $ink !important;
+
+  &::after { display: none !important; }
+
+  a {
+    color: $ink;
+    text-decoration: none;
+    font-weight: 700;
+
+    &:hover { color: $accent; text-decoration: none; }
+  }
+}
+
+.post-excerpt {
+  color: $ink-soft;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.read-more {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: $accent;
+  text-decoration: none;
+
+  &:hover { text-decoration: underline; }
+}
+
+// ── Breadcrumb ─────────────────────────────────────────────
+.breadcrumb {
+  margin-bottom: 1rem;
+
+  a {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: $accent;
+    text-decoration: none;
+
+    &:hover { text-decoration: underline; }
+  }
+}
+
+// ── Blog post ──────────────────────────────────────────────
+.post-header .post-meta {
+  font-size: 0.9rem;
+  color: $ink-muted;
+  margin-top: -0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.post-content hr { display: none; }
+
+.post-content a {
+  color: $accent;
+
+  &:hover { color: darken($accent, 10%); }
+}
+
+// ── Contact page ───────────────────────────────────────────
+.contact-intro {
+  color: $ink-soft;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.contact-form {
+  border-radius: 12px;
+  overflow: hidden;
+
+  iframe { display: block; width: 100%; }
+}
+
+// ── Footer ─────────────────────────────────────────────────
+.site-footer {
+  border-top: 1px solid $cream-line;
+  background: $cream;
+  color: $ink-muted;
+
+  .footer-heading,
+  .contact-list,
+  .social-media-list,
+  .footer-col-wrapper { color: $ink-muted; }
+
+  a { color: $accent; }
+}
+
+// ── Responsive ─────────────────────────────────────────────
+@media (max-width: 600px) {
+  .experience-entry .experience-header { flex-direction: column; }
+  .skills-grid { grid-template-columns: 1fr; }
+  .wordmark { font-size: 22px; }
+  .logo-mark { width: 38px; height: 38px; font-size: 15px; }
 }
